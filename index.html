@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's End Obesity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #fdd835;
+        }
+
+        nav {
+            background-color: #28293d;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #f5f5f5;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 1.2em;
+        }
+
+        nav a:hover {
+            color: #fdd835;
+        }
+
+        hr {
+            border: 1px solid #444;
+            margin: 20px 0;
+        }
+
+        .chat-box {
+            width: 80%;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #2e2f47;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .chat span {
+            display: block;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+
+        .description {
+            text-align: center;
+            margin: 20px auto;
+            font-size: 1.2em;
+        }
+
+        .slideshow {
+            width: 80%;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            text-align: center;
+            font-size: 1.3em;
+            padding: 20px;
+            background-color: #33344a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .active-slide {
+            display: block;
+        }
+
+        .slideshow-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .slideshow-controls span {
+            cursor: pointer;
+            padding: 5px 10px;
+            color: #f5f5f5;
+            font-size: 1.5em;
+        }
+
+        .slideshow-controls span:hover {
+            color: #fdd835;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Let's End Obesity</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Resources</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <hr>
+
+    <div class="chat-box">
+        <div id="chat" class="chat">
+            Bob: I'm a little obese, what do I do? 
+            <span>3 seconds ago</span>
+        </div>
+    </div>
+
+    <div class="description">
+        Look at these examples, all of these chats are telling people to visit web.letsendobesity.org, and you can too! Have a friend who is ashamed? Tell them this link! <br>
+        If you were sent this, here are some ways you can easily burn those extra calories!
+    </div>
+
+    <div class="slideshow">
+        <div class="slide active-slide">Slide 1: Eat healthy meals!</div>
+        <div class="slide">Slide 2: Stay active for at least 30 minutes daily!</div>
+        <div class="slide">Slide 3: Replace sugary drinks with water!</div>
+    </div>
+
+    <div class="slideshow-controls">
+        <span onclick="changeSlide(-1)">&#10094;</span>
+        <span onclick="changeSlide(1)">&#10095;</span>
+    </div>
+
+    <script>
+        // Chat Rotator
+        const chats = [
+            "Bob: I'm a little obese, what do I do? <span>3 seconds ago</span>",
+            "Keiran: Visit https://web.letsendobesity.org! <span>3 seconds ago</span>",
+            "Lenord: I'm feeling very winded when I take 3 steps. what do I do? <span>3 seconds ago</span>",
+            "Boberni: Oh, just visit https://web.letsendobesity.org! <span>3 seconds ago</span>"
+        ];
+
+        let chatIndex = 0;
+        const chatBox = document.getElementById("chat");
+
+        function rotateChat() {
+            chatIndex = (chatIndex + 1) % chats.length;
+            chatBox.innerHTML = chats[chatIndex];
+        }
+
+        setInterval(rotateChat, 3000);
+
+        // Slideshow
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function changeSlide(direction) {
+            slides[slideIndex].classList.remove("active-slide");
+            slideIndex = (slideIndex + direction + slides.length) % slides.length;
+            slides[slideIndex].classList.add("active-slide");
+        }
+    </script>
+</body>
+</html>
 
